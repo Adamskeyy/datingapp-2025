@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-messages',
   imports: [],
   templateUrl: './messages.html',
-  styleUrl: './messages.css'
+  styleUrl: './messages.css',
 })
-export class Messages {
-
-}
+export class Messages {}

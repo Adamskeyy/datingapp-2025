@@ -22,6 +22,6 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
     tap((response) => {
       cache.set(req.url, response);
     }),
-    finalize(() => busyService.idle())
+    finalize(() => busyService.idle()),
   );
 };

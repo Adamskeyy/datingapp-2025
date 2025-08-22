@@ -18,7 +18,7 @@ export class AccountService {
         if (user) {
           this.setCurrentuser(user);
         }
-      })
+      }),
     );
   }
 
@@ -28,7 +28,7 @@ export class AccountService {
         if (user) {
           this.setCurrentuser(user);
         }
-      })
+      }),
     );
   }
 
