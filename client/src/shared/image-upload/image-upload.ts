@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, ElementRef, input, output, signal, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -7,6 +7,8 @@ import { Component, input, output, signal } from '@angular/core';
   styleUrl: './image-upload.css',
 })
 export class ImageUpload {
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+
   protected imageSrc = signal<string | ArrayBuffer | null | undefined>(null);
   protected isDragging = false;
   private fileToUpload: File | null = null;
@@ -37,9 +39,19 @@ export class ImageUpload {
     }
   }
 
+  onFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files?.length) {
+      const file = input.files[0];
+      this.previewImage(file);
+      this.fileToUpload = file;
+    }
+  }
+
   onCancel() {
     this.fileToUpload = null;
     this.imageSrc.set(null);
+    this.fileInput.nativeElement.value = '';
   }
 
   onUploadFile() {
