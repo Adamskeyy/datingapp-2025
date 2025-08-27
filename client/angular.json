@@ -29,6 +29,10 @@
         "@schematics/angular:pipe": {
           "skipTests": true,
           "path": "src/core/pipes"
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true,
+          "path": "src/shared/directives"
         }
       },
       "root": "",
@@ -87,6 +91,12 @@
             },
             "development": {
               "buildTarget": "client:build:development"
+            },
+            "development-ssl": {
+              "buildTarget": "client:build:development",
+              "ssl": true,
+              "sslKey": "C:\\tools\\mkcert\\localhost+2-key.pem",
+              "sslCert": "C:\\tools\\mkcert\\localhost+2.pem"
             }
           },
           "defaultConfiguration": "development"
