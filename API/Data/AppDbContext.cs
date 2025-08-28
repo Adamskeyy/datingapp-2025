@@ -12,6 +12,9 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<AppUser>
   public DbSet<Photo> Photos { get; set; }
   public DbSet<MemberLike> Likes { get; set; }
   public DbSet<Message> Messages { get; set; }
+  public DbSet<Group> Groups { get; set; }
+  public DbSet<Connection> Connections { get; set; }
+  
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
@@ -55,8 +58,8 @@ public class AppDbContext(DbContextOptions options) : IdentityDbContext<AppUser>
     );
 
     var nullableDateTimeConverter = new ValueConverter<DateTime?, DateTime?>(
-      v => v.HasValue ? v.Value.ToUniversalTime(): null,
-      v => v.HasValue ?  DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : null
+      v => v.HasValue ? v.Value.ToUniversalTime() : null,
+      v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : null
     );
 
     foreach (var entityType in modelBuilder.Model.GetEntityTypes())
